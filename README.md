@@ -14,11 +14,11 @@
      - Play again button
 
    - Computer WINS
-    - Game status text
-    - Play again button
+     - Game status text
+     - Play again button
 
    - TIE
-    - Replay button
+     - Replay button
 
 
 - On pressing play again and replay button --> player will be redirected to the landing page.
