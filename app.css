@@ -226,6 +226,11 @@ button:active {
     font-size: var(--font-size-10);
     line-height: var(--line-height-10);
     text-transform: uppercase;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
 }
 
 
@@ -244,6 +249,10 @@ button:active {
 
     font-family: var(--text-font-family);
     letter-spacing: var(--letter-spacing);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 
@@ -278,16 +287,121 @@ button:active {
 
 
 .entity-outer:active {
-    cursor: pointer;
     transform: scale(0.9)
+}
+
+.entity-outer:hover {
+    cursor: pointer;
 }
 
 
 
 
+/* ------------ HALO ------------ */
+
+
+.showAnimation {
+    position: relative;
+}
+
+.showAnimation > .halo {
+    /* border: 1px solid blue; */
+    position: absolute;
+    top: calc((-142px/2) - -16px);
+    z-index: -1;
+}
 
 
 
+.circle-1 {
+    position: relative;
+    border: 1px solid red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 350px;
+    height: 350px;
+
+    /* animation-name: circle-animation;
+    animation-duration: 2s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite; */
+}
+
+.circle-2 , .circle-3 {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+ .circle-1 {
+    animation-name: circle-1-animation;
+    animation-duration: 2s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+
+    animation-delay: 1s;
+}
+
+.circle-2 {
+    animation-name: circle-2-animation;
+    animation-duration: 2s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+
+    animation-delay: 0.5s;
+}
+
+.circle-3 {
+    animation-name: circle-3-animation;
+    animation-duration: 2s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+
+@keyframes circle-3-animation {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes circle-2-animation {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes circle-1-animation {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
 
 
 
@@ -340,7 +454,7 @@ button:active {
     align-items: center;
     border: 1px solid red;
 
-    position: relative;
+    /* position: relative; */
 }
 
 .options > .upper {
@@ -350,10 +464,37 @@ button:active {
 .options > .upper::before {
     content: "";
     position: absolute;
-    width: 100%;
+    width: 70%;
     height: 15px;
-    background-color: black;
+    background-color: #5c5b5b;
     top: calc(50% - 7.5px);
+    left: calc(142px/2);
+    z-index: -1;
+}
+
+
+.line-1 {
+    position: absolute;
+    background-color: #5c5b5b;
+    width: 70%;
+    height: 15px;
+    left: -170px;
+    top: calc(50% - 7.5px);
+    transform: rotate(58deg);
+    transform-origin: 115px 214px;
+    z-index: -1;
+}
+
+
+.line-2 {
+    position: absolute;
+    background-color: #5c5b5b;
+    width: 70%;
+    height: 15px;
+    right: -170px;
+    top: calc(50% - 7.5px);
+    transform: rotate(-58deg);
+    transform-origin: 178px 205px;
     z-index: -1;
 }
 
@@ -374,10 +515,248 @@ button:active {
 }
 
 .options .option-paper {
-    margin: var(--spacing-xl) 0px 0px 0px;
+    margin: calc(var(--spacing-xl)*1.5) 0px 0px 0px;
 }
 
-.options .option-paper::before {
-    content: "";
+
+
+
+
+/* ----------------------------- RULES ----------------------------- */
+
+.rules-main {
+    border: 1px solid black;
+
+    position: fixed; 
+    bottom: var(--spacing-md);
+    right: calc(var(--spacing-md) * 2 + 5px);
+
+    display: flex;
+    flex-direction: row;
+}
+
+.rules-main > .next-btn {
+    align-self: flex-end;
+    margin: 0px 0px 0px var(--spacing-lg);
+
+    display: none;
+}
+
+.rules-main > .next-btn-active {
+    display: block;
+}
+
+.rules-container > .rules-active {
+    display: block;
+}
+
+.rules-container {
+    border: 1px solid red;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.rules-container > .rule-btn {
+    margin: var(--spacing-md) -15px 0px 0px;
+    align-self: flex-end;
+}
+
+.rules {
+    width: 278px;
+    height: 325px;
+    background-color: var(--rulepopup-bg-color);
+    border: 7px solid var(--text-light);
+    border-radius: var(--border-radius-1);
+
+    box-sizing: border-box;
+    padding: var(--spacing-md);
+
+    position: relative;
+
+    display: none;
+}
+
+.rules > button {
     position: absolute;
+}
+
+.rules > h2 {
+    text-align: center;
+}
+
+.rules > ul {
+    list-style: none;
+}
+
+
+
+.rules > .rule-points {
+    margin: var(--spacing-md) 0px 0px 0px;
+}
+
+.rules > .rule-points >  p {
+    letter-spacing: 0px;
+    margin: 0px 0px var(--spacing-md) 0px;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.rules > .rule-points > p::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    background-color: var(--rule-bullet-color);
+    flex-shrink: 0;
+    margin: 0px calc(var(--spacing-sm) + 3px) 0px 0px;
+}
+
+.rules > .close-btn {
+    box-sizing: border-box;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: var(--close-bg-color);
+    border: 5px solid var(--button-bg-color);
+
+    padding: var(--spacing-sm);
+
+    position: absolute;
+    top: -29px;
+    right: -29px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.rules > .close-btn > img {
+    width: 20px;
+}
+
+
+
+
+
+
+/* ----------------------------- Win Section ----------------------------- */
+
+.winSection {
+    border: 1px solid red;
+    text-transform: uppercase;
+
+    display:flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.winSection > .chosen-entity {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.winSection h3 {
+    margin: 0px 0px var(--spacing-lg) 0px;
+}
+
+.winSection > .status {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.winSection > .status > .text-1 {
+    font-weight: var(--font-extrabold);
+    font-size: var(--font-size-5);
+    line-height: var(--line-height-5);
+}
+
+.winSection > .status > .text-2 {
+    font-weight: var(--font-medium-1);
+    font-size: var(--font-size-7);
+    line-height: var(--line-height-7);
+
+    letter-spacing: 1px;
+    margin: var(--spacing-sm) 0px var(--spacing-md) 0px;
+}
+
+
+
+
+
+/* ----------------------------- HURRAY Section ----------------------------- */
+
+
+.hurray-section {
+    margin: var(--spacing-lg) 0px 0px 0px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.hurray-section > .img-div {
+    position: relative;
+    width: 504px;
+    height: 297px;
+    /* border: 1px solid black; */
+}
+
+.hurray-section > .img-div > .star {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+    animation-name: star-animation;
+    animation-duration: 2s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;    
+}
+
+.hurray-section > .img-div > .trophy {
+    position: absolute;
+    width: 200px;
+    top: calc(50% - 68px);
+    left: calc(50% - 100px);
+}
+
+.hurray-section > .hurray-text {
+    font-weight: var(--font-medium-2);
+    font-size: var(--font-size-1);
+    line-height: var(--line-height-1);
+    margin: var(--spacing-sm) 0px 0px 0px;
+}
+
+.hurray-section > .message {
+    font-weight: var(--font-medium-1);
+    font-size: var(--font-size-3);
+    line-height: var(--line-height-3);
+    letter-spacing: 1px;
+}
+
+
+.hurray-section > button {
+    margin: calc(var(--spacing-lg) * 1.5) 0px 0px 0px;
+}
+
+
+
+
+@keyframes star-animation {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.3;
+    }
+
+    100% {
+        opacity: 1;
+    }
 }
