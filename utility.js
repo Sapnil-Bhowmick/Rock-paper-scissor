@@ -70,7 +70,7 @@ export function determineWinStatus(userSelectedEntity, computerSelectedEntity) {
 
 export function setScore(status) {
 
-    console.log(status === userWin)
+    // console.log(status === userWin)
 
     let localstorage_ScoreObj
 

@@ -3,9 +3,6 @@ import Choice, {
     computerWin,
     tie,
     score,
-    rockEntity,
-    paperEntity,
-    scissorEntity,
     Entity_Number,
     imageObj,
     borderColorObj,
@@ -16,8 +13,6 @@ import Choice, {
 
 import {
     determineGameStatus,
-    getSelectedEntity,
-    determineWinStatus,
     setScore,
     randomSelectEntity
 } from "./utility.js"
@@ -49,14 +44,14 @@ const pcChosenImage = document.querySelector(".resultSection #pcChosenEntity img
 
 const playAgainBtn_result = document.querySelector(".resultSection .playAgain-btn")
 const playAgainBtn_hurray = document.querySelector(".hurray-section .playAgain-btn")
-console.log(pcChosenEntity.parentElement.parentElement)
+
 
 
 const userScore = document.querySelector(".header .pill-container .score-pill > #user-score")
 const pcScore = document.querySelector(".header .pill-container .score-pill > #pc-score")
 
 const statusElement = document.querySelector(".resultSection > .status")
-console.log(statusElement.querySelector(".text-1"))
+
 
 
 
@@ -86,7 +81,7 @@ playAgainBtn_result.addEventListener("click", () => {
         playAgainBtn_result.textContent = "Play again"
     }
 
-
+    statusElement.querySelector(".text-1").style.margin = "0px"
     nextBtn.classList.add("hide-nextbtn")
     resultsection.classList.toggle("hide-resultSection")
     optionSection.classList.toggle("hide-options")
@@ -108,27 +103,23 @@ nextBtn.addEventListener("click", () => {
     nextBtn.classList.add("hide-nextbtn")
 })
 
+
+
 // Select rock / paper / scissor
 
 rock.addEventListener("click", () => {
-    console.log('rock selected..')
-
     const userChoice = new Choice(1, 0, 0)
     optionSection.classList.toggle("hide-options")
     renderPage(userChoice)
 })
 
 paper.addEventListener("click", () => {
-    console.log('paper selected..')
-
     const userChoice = new Choice(0, 1, 0)
     optionSection.classList.toggle("hide-options")
     renderPage(userChoice)
 })
 
 scissor.addEventListener("click", () => {
-    console.log('scissor selected..')
-
     const userChoice = new Choice(0, 0, 1)
     optionSection.classList.toggle("hide-options")
     renderPage(userChoice)
@@ -164,77 +155,56 @@ function renderPage(userChoice) {
     if (!userEntity.classList.contains("disable-pointerEvents") && !pcEntity.classList.contains("disable-pointerEvents")) {
         userEntity.classList.add("disable-pointerEvents")
         pcEntity.classList.add("disable-pointerEvents")
-        console.log("Disable pointer events first time only...")
     }
 
     if (status && status === userWin) {
-
-        console.log("Show userwin page")
-
-        setScore(status)
-        fetchScore()
-
-        userChosenImage.src = imageObj[userSelectedEntity]
-        pcChosenImage.src = imageObj[computerSelectedEntity]
-
-        userChosenEntity.style.borderColor = borderColorObj[userSelectedEntity]
-        pcChosenEntity.style.borderColor = borderColorObj[computerSelectedEntity]
-
-        userChosenEntity.parentElement.parentElement.classList.remove("hide-Halo")
-
-        nextBtn.classList.remove("hide-nextbtn")
-
-        statusElement.querySelector(".text-1").textContent = winStatus
-
-        resultsection.classList.toggle("hide-resultSection")
-
+        statusLogic(status, userSelectedEntity, computerSelectedEntity)
     }
     else if (status && status === computerWin) {
-        console.log("show computerWin page")
-
-        setScore(status)
-        fetchScore()
-
-        userChosenImage.src = imageObj[userSelectedEntity]
-        pcChosenImage.src = imageObj[computerSelectedEntity]
-
-        userChosenEntity.style.borderColor = borderColorObj[userSelectedEntity]
-        pcChosenEntity.style.borderColor = borderColorObj[computerSelectedEntity]
-
-        pcChosenEntity.parentElement.parentElement.classList.remove("hide-Halo")
-
-        statusElement.querySelector(".text-1").textContent = looseStatus
-
-        resultsection.classList.toggle("hide-resultSection")
-
+        statusLogic(status, userSelectedEntity, computerSelectedEntity)
     }
 
     else {
-        console.log("show Tie page")
-
-        setScore(status)
-        fetchScore()
-
-        userChosenImage.src = imageObj[userSelectedEntity]
-        pcChosenImage.src = imageObj[computerSelectedEntity]
-
-        userChosenEntity.style.borderColor = borderColorObj[userSelectedEntity]
-        pcChosenEntity.style.borderColor = borderColorObj[computerSelectedEntity]
-
-        playAgainBtn_result.textContent = "Replay"
-
-        statusElement.querySelector(".text-1").textContent = tieStatus
-        statusElement.querySelector(".text-1").style.margin = "0px 0px 16px 0px"
-        statusElement.querySelector(".text-2").classList.add("hide-text2")
-
-        resultsection.classList.toggle("hide-resultSection")
+        statusLogic(status, userSelectedEntity, computerSelectedEntity)
     }
 }
 
 
+function statusLogic(status, userSelectedEntity, computerSelectedEntity) {
+
+    setScore(status)
+    fetchScore()
+
+    userChosenImage.src = imageObj[userSelectedEntity]
+    pcChosenImage.src = imageObj[computerSelectedEntity]
+
+    userChosenEntity.style.borderColor = borderColorObj[userSelectedEntity]
+    pcChosenEntity.style.borderColor = borderColorObj[computerSelectedEntity]
+
+    if (status === userWin) {
+        nextBtn.classList.remove("hide-nextbtn")
+        statusElement.querySelector(".text-1").textContent = winStatus
+        userChosenEntity.parentElement.parentElement.classList.remove("hide-Halo")
+    }
+
+    if (status === computerWin) {
+        statusElement.querySelector(".text-1").textContent = looseStatus
+        pcChosenEntity.parentElement.parentElement.classList.remove("hide-Halo")
+    }
 
 
+    if (status === tie) {
+        statusElement.querySelector(".text-1").textContent = tieStatus
+        playAgainBtn_result.textContent = "Replay"
 
+        statusElement.querySelector(".text-1").style.margin = "0px 0px 16px 0px"
+        statusElement.querySelector(".text-2").classList.add("hide-text2")
+    }
+
+
+    resultsection.classList.toggle("hide-resultSection")
+
+}
 
 
 function hideActiveHalo() {
@@ -249,9 +219,8 @@ function hideActiveHalo() {
 
 function setInitialScore() {
     if (!localStorage.getItem("SCORE")) {
-        console.log("store for the first time only")
+        // console.log("store for the first time only...")
         localStorage.setItem("SCORE", JSON.stringify(score))
-        console.log(localStorage.getItem("SCORE"))
     }
 }
 
