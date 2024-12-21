@@ -191,6 +191,10 @@ body {
     line-height: var(--line-height-9);
 }
 
+.hide-text2 {
+    display: none;
+}
+
 .score-pill > .score-point {
     font-weight: var(--font-bold);
     font-size: var(--font-size-2);
@@ -429,6 +433,10 @@ button:active {
     justify-content: space-between;
 }
 
+.header.hide-header {
+    display: none
+}
+
 .header > title {
     text-transform: uppercase;
 }
@@ -455,6 +463,10 @@ button:active {
     border: 1px solid red;
 
     /* position: relative; */
+}
+
+.options.hide-options {
+    display: none;
 }
 
 .options > .upper {
@@ -538,7 +550,9 @@ button:active {
 .rules-main > .next-btn {
     align-self: flex-end;
     margin: 0px 0px 0px var(--spacing-lg);
+}
 
+.rules-main > .next-btn.hide-nextbtn {
     display: none;
 }
 
@@ -573,7 +587,9 @@ button:active {
     padding: var(--spacing-md);
 
     position: relative;
+}
 
+.rules.hide-rules {
     display: none;
 }
 
@@ -643,7 +659,7 @@ button:active {
 
 /* ----------------------------- Win Section ----------------------------- */
 
-.winSection {
+.resultSection {
     border: 1px solid red;
     text-transform: uppercase;
 
@@ -653,29 +669,38 @@ button:active {
     align-items: center;
 }
 
-.winSection > .chosen-entity {
+.resultSection.hide-resultSection {
+    display: none;
+}
+
+.resultSection > .chosen-entity {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.winSection h3 {
+.resultSection > .disable-pointerEvents {
+    pointer-events: none;
+}
+
+
+.resultSection h3 {
     margin: 0px 0px var(--spacing-lg) 0px;
 }
 
-.winSection > .status {
+.resultSection > .status {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.winSection > .status > .text-1 {
+.resultSection > .status > .text-1 {
     font-weight: var(--font-extrabold);
     font-size: var(--font-size-5);
     line-height: var(--line-height-5);
 }
 
-.winSection > .status > .text-2 {
+.resultSection > .status > .text-2 {
     font-weight: var(--font-medium-1);
     font-size: var(--font-size-7);
     line-height: var(--line-height-7);
@@ -685,7 +710,9 @@ button:active {
 }
 
 
-
+.hide-Halo > .halo{
+    display: none
+}
 
 
 /* ----------------------------- HURRAY Section ----------------------------- */
@@ -698,6 +725,10 @@ button:active {
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+}
+
+.hurray-section.hide-HurraySection {
+    display: none;
 }
 
 .hurray-section > .img-div {

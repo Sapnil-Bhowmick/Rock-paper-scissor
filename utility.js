@@ -15,7 +15,11 @@ export function determineGameStatus(userChoice, computerChoice) {
 
     const status = determineWinStatus(userSelectedEntity, computerSelectedEntity)
     // console.log(status)
-    return status
+    return {
+        status,
+        userSelectedEntity,
+        computerSelectedEntity
+    }
 
 }
 

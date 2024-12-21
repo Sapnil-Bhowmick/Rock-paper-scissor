@@ -27,26 +27,27 @@
             <div class="score-pill">
                 <span class="text-1">Computer</span>
                 <span class="text-2">Score</span>
-                <span class="score-point">0</span>
+                <span class="score-point" id="pc-score">0</span>
             </div>
 
             <div class="score-pill">
                 <span class="text-1">Your</span>
                 <span class="text-2">Score</span>
-                <span class="score-point">0</span>
+                <span class="score-point" id="user-score">0</span>
             </div>
         </div>
     </header>
 
 
+
     <section class="options section-container">
         <div class="upper">
-            <div class="entity-outer option-rock">
+            <div class="entity-outer option-rock" id="rock">
                 <div class="entity-inner rock">
                     <img src="./assets/images/rock.svg" alt="rock" />
                 </div>
             </div>
-            <div class="entity-outer option-scissor">
+            <div class="entity-outer option-scissor" id="scissor">
                 <div class="entity-inner scissor">
                     <img src="./assets/images/scissor.svg" alt="scissor" />
                 </div>
@@ -55,15 +56,17 @@
             <span class="line-1"></span>
             <span class="line-2"></span>
         </div>
-        <div class="entity-outer option-paper">
+        <div class="entity-outer option-paper" id="paper">
             <div class="entity-inner paper">
                 <img src="./assets/images/paper.svg" alt="paper" />
             </div>
         </div>
     </section>
 
-    <!-- <section class="winSection section-container">
-        <div class="chosen-entity ">
+
+
+    <section class="resultSection hide-resultSection section-container">
+        <div class="chosen-entity showAnimation hide-Halo" id="userChosenEntity">
             <h3>You Picked</h3>
             <div class="entity-outer">
                 <div class="entity-inner">
@@ -71,8 +74,17 @@
                 </div>
             </div>
 
-
-
+            <div class="halo">
+                <div class="circle-1">
+                    <img src="./assets/images/Ellipse-4.svg" />
+                    <div class="circle-2">
+                        <img src="./assets/images/Ellipse-3.svg" />
+                        <div class="circle-3">
+                            <img src="./assets/images/Ellipse-5.svg" />
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div class="status">
@@ -81,7 +93,7 @@
             <button class="playAgain-btn">Play again</button>
         </div>
 
-        <div class="chosen-entity showAnimation">
+        <div class="chosen-entity showAnimation hide-Halo" id="pcChosenEntity">
             <h3>PC Picked</h3>
             <div class="entity-outer">
                 <div class="entity-inner">
@@ -102,76 +114,52 @@
             </div>
         </div>
 
-    </section> -->
+    </section>
 
-    <!-- <section class="hurray-section">
+
+
+    <section class="hurray-section hide-HurraySection">
         <div class="img-div">
-            <img class="star"  src="./assets/images/stars.png" alt="" />
-            <img class="trophy"  src="./assets/images//trophy.svg" alt="" />
+            <img class="star" src="./assets/images/stars.png" alt="" />
+            <img class="trophy" src="./assets/images//trophy.svg" alt="" />
         </div>
 
         <span class="hurray-text">HURRAY!!</span>
         <span class="message">YOU WON THE GAME</span>
         <button class="playAgain-btn">Play again</button>
-    </section> -->
-    
+    </section>
+
 
 
     <div class="rules-main">
         <div class="rules-container">
-            <div class="rules">
+            <div class="rules hide-rules">
                 <h2>Game Rules</h2>
-    
+
                 <div class="rule-points">
                     <p>Rock beats scissors, scissors beat paper, and paper beats rock.</p>
-    
+
                     <p>Agree ahead of time whether you’ll count off “rock, paper, scissors, shoot” or just “rock, paper,
                         scissors.”
                     </p>
                     <p>Use rock, paper, scissors to settle minor decisions or simply play to pass the time</p>
                     <p>If both players lay down the same hand, each player lays down another hand</p>
                 </div>
-    
+
                 <button class="close-btn">
                     <img src="./assets/images/cross.svg" alt="close-icon" />
                 </button>
             </div>
-    
+
             <button class="transparent-btn rule-btn">Rules</button>
         </div>
 
-        <button class="transparent-btn next-btn">Next</button>
+        <button class="transparent-btn next-btn hide-nextbtn">Next</button>
     </div>
 
 
 
-
-
-
-
-
-
-
-
-
-
-    <!-- <div class="score-pill">
-        <span class="text-1">Computer</span>
-        <span class="text-2">Score</span>
-        <span class="score-point">0</span>
-    </div> -->
-
-    <!-- <button class="playAgain-btn">Play again</button> -->
-
-    <!-- <button class="transparent-btn">Rules</button> -->
-
-    <!-- <div class="entity-outer">
-        <div class="entity-inner">
-            <img src="./assets/images/rock.svg" alt="rock" />
-        </div>
-    </div> -->
-
-    <!-- <script src="./app.js" type="module"></script> -->
+    <script src="./app.js" type="module"></script>
 </body>
 
 </html>
