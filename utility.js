@@ -79,11 +79,11 @@ export function setScore(status) {
 
         if (status === userWin) {
             localstorage_ScoreObj.userScore >= 0 && localstorage_ScoreObj.userScore++
-            console.log(localstorage_ScoreObj)
+            // console.log(localstorage_ScoreObj)
         }
         if (status === computerWin) {
             localstorage_ScoreObj.computerScore >= 0 && localstorage_ScoreObj.computerScore++
-            console.log(localstorage_ScoreObj)
+            // console.log(localstorage_ScoreObj)
         }
 
         localStorage.setItem("SCORE", JSON.stringify(localstorage_ScoreObj))
